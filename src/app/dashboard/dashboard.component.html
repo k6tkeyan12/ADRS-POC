@@ -8,15 +8,7 @@
                             <i class="fa fa-exclamation-triangle"></i>
                         </div>
                         <p class="card-category">Total Accidents</p>
-                        <h3 class="card-title">{{curentMonthAccident}}
-                            <small>person</small>
-                        </h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons text-danger">warning</i>
-                            <a href="javascript:void(0)"></a>
-                        </div>
+                        <h3 class="card-title">{{curentMonthAccident}}</h3>
                     </div>
                 </div>
             </div>
@@ -29,11 +21,6 @@
                         <p class="card-category">Current Month</p>
                         <h3 class="card-title">{{curentMonthAccident}}</h3>
                     </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">date_range</i>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -42,13 +29,8 @@
                         <div class="card-icon">
                             <i class="fa fa-bell"></i>
                         </div>
-                        <p class="card-category">Reporting time</p>
+                        <p class="card-category">Avg Reporting time</p>
                         <h3 class="card-title">{{averageReportingTime}}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">local_offer</i>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -60,11 +42,6 @@
                         </div>
                         <p class="card-category">Total Lives Saved</p>
                         <h3 class="card-title">{{totalLifeSaves}}</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <i class="material-icons">update</i>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -82,6 +59,9 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
+                    <div class="card-header card-header-success">
+                            <h4 class="card-title">Today's Accidents</h4>                        
+                    </div>
                     <div class="card-body">
                             <app-maps [accidentData]="accidentData" [mapLatLong]="mapLatLong"></app-maps>
                     </div>
@@ -102,7 +82,7 @@
             <div class="col-md-6">
                 <div class="card card-chart">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title">Accidents by Vehicle Type</h4>                                                
+                        <h4 class="card-title">Average Reporting Time</h4>                                                
                     </div>
                     <div class="card-body">
                         <div class="ct-chart" id="completedTasksChart"></div>
