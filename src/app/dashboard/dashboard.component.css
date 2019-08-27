@@ -1,0 +1,26 @@
+.card [class*=card-header-] .card-icon, .card [class*=card-header-] .card-text{
+    padding: 0px !important;
+}
+
+.card [class*=card-header-]:not(.card-header-icon):not(.card-header-text):not(.card-header-image){
+    padding: 5px !important;
+    border-radius: 5px;
+}
+
+.card-stats .card-header.card-header-icon i {
+    font-size: 20px;
+    line-height: 36px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+.card .card-header .card-title {
+    margin-bottom: 3px;
+    margin-left: 6px;
+    margin-top: 2px;
+    font-size: small;
+}
+.card-stats .card-header .card-category:not([class*=text-]) {
+    color: #000;
+    font-size: 14px;
+}
