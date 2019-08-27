@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .tableheadfont{
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .table-responsive > .table-bordered {
+    border: 1px solid #ddd;
+}
+.main-panel .main-content {
+  margin-top: 40px;
+}

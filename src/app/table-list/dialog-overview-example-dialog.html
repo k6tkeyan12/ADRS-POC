@@ -1,0 +1,105 @@
+<style>
+    .paddreport {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        background: rgba(123, 123, 123, 0.16);
+        margin: 1px 0 1px 0;
+        font-size: 0.85em;
+        padding: 5px 0px 5px 5px;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.06);
+        border-bottom: 0.9px;
+    }
+
+    .headingcolor {
+        background-color: #e67269;
+        color: white;
+        height: 25px;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 2.1em;
+    }
+
+    img {
+        width: 80px;
+        height: 30px;
+    }
+</style>
+<h1 mat-dialog-title class="text-center">ADRS Police Accidental Report</h1>
+<hr />
+<div mat-dialog-content>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">
+            <div class="row col-md-6">Date</div>
+            <div class="row col-md-6">{{data.date}}</div>
+        </div>
+        <div class=" row col-md-6">
+            <div class="row col-md-6">Time</div>
+            <div class="row col-md-6">{{data.time}} </div>
+        </div>
+    </div>
+    <div class=" paddreport  headingcolor">Location Of Accident</div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">
+            <div class="row col-md-6">Lattitude</div>
+            <div class="row col-md-6">{{data.lat}}</div>
+        </div>
+        <div class=" row col-md-6  ">
+            <div class=" row col-md-6">Longtitude</div>
+            <div class="row col-md-6">{{data.long}} </div>
+        </div>
+    </div>
+    <div class="  col-md-12 paddreport headingcolor">Police Station Reported to</div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Address</div>
+        <div class=" row col-md-6">{{data.policeaddress}}</div>
+    </div>
+    <div class="  col-md-12 paddreport headingcolor">Vehicle Owner Detail</div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Vehicle</div>
+        <div class="  row col-md-6">{{data.vehicle}}</div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Owner Name</div>
+        <div class="row  col-md-6">{{data.owner}}</div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Address</div>
+        <div class=" row col-md-6">{{data.owneradd}}</div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Contact</div>
+        <div class=" row col-md-6">{{data.contact}}</div>
+    </div>
+    <div class="  col-md-12 paddreport headingcolor">Accident detail</div>
+    <div class=" row col-md-12 paddreport">
+        <div class="row  col-md-6">No of person</div>
+        <div class="row  col-md-6">{{data.noperson}}</div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class="row  col-md-6">Severity</div>
+        <div class="row  col-md-6">{{data.severity}}</div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">CCTV images</div>
+        <div class="row  col-md-6"><img style="margin-right: 10px;" *ngFor="let accidentimg of data.image"
+                [src]="accidentimg"><!-- <img style="margin-left: 10px;" [src]="data.image[1]">-->
+        </div>
+    </div>
+    <div class=" row col-md-12 paddreport">
+        <div class=" row col-md-6">Audio</div>
+        <div class="row  col-md-6"><audio controls>
+                <source [src]="data.audio" type="audio/wav">
+                <source [src]="data.audio" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <hr />
+    <!--<mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>-->
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
