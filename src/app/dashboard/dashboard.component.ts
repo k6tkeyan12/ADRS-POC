@@ -88,7 +88,8 @@ export class DashboardComponent implements OnInit {
         this.mapLatLong.push({
           'name': accident.owner,
           'lat': accident.lat,
-          'long': accident.long
+          'long': accident.long,
+          'date': accident.date,
         });
       }
       console.log(this.accidentData,'----------',this.mapLatLong);

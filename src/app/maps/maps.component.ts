@@ -33,25 +33,48 @@ export class MapsComponent implements OnChanges, OnInit {
                 center: { lat: -33.9, lng: 151.2 }
             };
             var image = {
-                url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                // url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
                 size: new google.maps.Size(20, 32),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(0, 32)
             };
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            // validate today date
+            const isToday = (someDate) => {
+                const today = new Date()
+                return someDate.getDate() == today.getDate() &&
+                    someDate.getMonth() == today.getMonth() &&
+                    someDate.getFullYear() == today.getFullYear()
+            }
 
             for (var index of this._mapLatLong) {
-                console.log('index', index);
+                // console.log('index', index);
+                // console.log('Date', new Date());
+                // console.log('isToday', isToday(new Date(index.date)));
                 var marker = new google.maps.Marker({
                     position: { lat: parseInt(index.lat), lng: parseInt(index.long) },
                     map: map,
-                    icon: image,
+                    // icon: image,
                     // shape: shape,
                     title: index.name
                 });
+                var contentString = index.name;
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, contentString, infowindow) {
+                    return function () {
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                    };
+                })(marker, contentString, infowindow));
             }
 
-            console.log('--------marker', marker);
+            
+
+            // console.log('--------marker', marker);
             // To add the marker to the map, call setMap();
             marker.setMap(map);
 
@@ -61,13 +84,13 @@ export class MapsComponent implements OnChanges, OnInit {
             //     zoom: 10,
             //     center: {lat: -33.9, lng: 151.2}
             // });
-            
+
             // setMarkers(map);
-              
+
             //   // Data for the markers consisting of a name, a LatLng and a zIndex for the
             //   // order in which these markers should display on top of each other.
-              
-              
+
+
             //   function setMarkers(map) {
             //     var beaches = [
             //         ['Bondi Beach', -33.890542, 151.274856, 4],
@@ -77,10 +100,10 @@ export class MapsComponent implements OnChanges, OnInit {
             //         ['Maroubra Beach', -33.950198, 151.259302, 1]
             //       ];
             //     // Adds markers to the map.
-              
+
             //     // Marker sizes are expressed as a Size of X,Y where the origin of the image
             //     // (0,0) is located in the top left of the image.
-              
+
             //     // Origins, anchor positions and coordinates of the marker increase in the X
             //     // direction to the right and in the Y direction down.
             //     var image = {
