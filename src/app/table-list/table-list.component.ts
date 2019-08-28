@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs/Rx';
 import {MatTableDataSource} from '@angular/material/table';
 //import {MatDialogModule} from '@angular/material/dialog';
@@ -73,10 +74,33 @@ export class TableListComponent implements OnInit {
 
   
 
-  constructor(private http: Http,public dialog: MatDialog) { }
+  constructor(private http: Http,public dialog: MatDialog,private route: ActivatedRoute) { }
 
   ngOnInit() {
+     
+    /*this.route.paramMap.subscribe(params => {
+      console.log(params.keys);
+    })*/
+
     this.getAccidentData().subscribe(data => {
+      console.log(this.route.snapshot.url[0].path);
+      if(this.route.snapshot.url[0].path == "todaylist"){
+      
+      let now = new Date();
+      let date=now.getDate();
+      let month=now.getMonth()+1;
+      let year=now.getFullYear()
+      let datefinal=date+"/"+month+"/"+year
+      //console.log(datefinal);
+      for(var i=0;i<data.length;i++){
+        if(datefinal==data[i].date){
+         console.log(datefinal);
+         this.accidentData.push(data[i]);
+        }
+      }
+      this.dataSource = new MatTableDataSource(this.accidentData);
+    }
+    else{
       console.log("datatablellist");
       this.accidentData = data;
       this.dataSource = new MatTableDataSource(data);
@@ -93,8 +117,12 @@ export class TableListComponent implements OnInit {
           'long': accident.long
         });
       }
+    
       console.log(this.accidentData,'----------',this.mapLatLong);*/
+    }
     }, error => console.log(error));
+
+  
   }
   getAccidentData(): Observable<any> {
     return this.http.get("assets/accident/1.json")
